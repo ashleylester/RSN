@@ -2,6 +2,7 @@
 R interface for ServiceNow REST API
 
 Use R to load ServiceNow table data into R data.frames.
+
 If your company leverages R for your data needs and uses ServiceNow, this repository can become useful to quickly extract data from ServiceNow into R.
 
 Currently there are 2 quick functions for ServiceNow Table API and Aggregate API:
@@ -36,8 +37,8 @@ rsn_table_api(
 ```
 		
 ### Aggregate API:
-source(file=url("https://raw.githubusercontent.com/kirillsavine/RSN/master/rsn.r"))
 ```
+source(file=url("https://raw.githubusercontent.com/kirillsavine/RSN/master/rsn.r"))
 rsn_aggr_api(
 	domain="https://demo021.service-now.com",	
 	user_pwd="itil:itil",				
