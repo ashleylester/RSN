@@ -69,6 +69,6 @@ rsn_aggr_api(
 
 
 # Learn More:
-ServiceNow wiki on Table API: http://wiki.servicenow.com/index.php?title=Table_API 
-ServiceNow wiki on Aggregate API: http://wiki.servicenow.com/index.php?title=Aggregate_API
+ - ServiceNow wiki on Table API: http://wiki.servicenow.com/index.php?title=Table_API 
+ - ServiceNow wiki on Aggregate API: http://wiki.servicenow.com/index.php?title=Aggregate_API
 
