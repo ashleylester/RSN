@@ -39,6 +39,7 @@ rsn_table_api(
 ### Aggregate API:
 ```
 source(file=url("https://raw.githubusercontent.com/kirillsavine/RSN/master/rsn.r"))
+
 rsn_aggr_api(
 	domain="https://demo021.service-now.com",	
 	user_pwd="itil:itil",				
