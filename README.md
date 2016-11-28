@@ -17,7 +17,7 @@ Currently there are 2 quick functions for ServiceNow Table API and Aggregate API
 
 This example uses ServiceNow demo instance:
 https://demo021.service-now.com
- - login: itill
+ - login: itil
  - password: itil
 
 ### Table API:
