@@ -15,7 +15,7 @@ rsn_check_inputs=function(r){
 rsn_collect_args=function(x){
 	# collect optional arguments	
 	if(length(x)==0){opt_args_url=""}else{		
-		opt_array=unlist(x1)
+		opt_array=unlist(x)
 		if(is.null(names(opt_array))){opt_args_url=paste(opt_array,collapse="&")}else{opt_args_url=paste0(paste(paste(names(opt_array),as.character(opt_array),sep="="),collapse="&"),"&")}
 	}
 	opt_args_url
