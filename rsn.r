@@ -142,12 +142,21 @@ rsn_aggr_api=function(
 		if(count>9){stop("RSN ERROR: cannot extract data, check your inputs")}
 	}
 	
+	# ensure category fields are separated
 	cats=do.call("rbind", lapply(res$groupby_fields,function(x){as.data.frame(t(x))[2,]}))
 	names(cats)=as.character(res$groupby_fields[[1]]$field)
 	rownames(cats)=NULL
 	res=cbind(res,cats)
 	res=res[,names(res)[names(res)!="groupby_fields"]]
 	
+	# ensure value fields are separated
+	stats_df=res$stats
+	stats_names=lapply(stats_df,names)
+	stats_names=unlist(lapply(seq(1,length(stats_names)),function(x){ifelse(is.null(stats_names[x][[1]]),names(stats_names[x]),stats_names[[x]])}))
+	names(stats_df)=stats_names
+	res=res[,names(res)[names(res)!="stats"]]
+	res=cbind(stats_df,res)
+
 	secs=as.numeric(difftime(Sys.time(),st,units="secs") )
 	print(paste0(nrow(res)," x ",length(names(res))," done in: ",gsubfn(".", list("S" = " sec.", "M" = " min.", "H" = " hr.", "d" = " days"), toString(round(seconds_to_period(secs),0)))," (or ",round(secs,2)," sec.)"),quote=FALSE)
 	res
