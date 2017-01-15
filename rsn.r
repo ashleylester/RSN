@@ -22,7 +22,7 @@ rsn_collect_args=function(x){
 }
 
 rsn_table_api=function(
-	domain="https://demo021.service-now.com"													,	
+	domain="https://demo021.service-now.com"	# if this returns error, try this instance: "https://demo016.service-now.com"												,	
 	user_pwd="itil:itil"												,				
 	table_name="incident"										,					
 	sysparm_query="numberSTARTSWITHINC&state=2"									,	
@@ -87,7 +87,7 @@ rsn_table_api=function(
 
 
 rsn_aggr_api=function(
-	domain="https://demo021.service-now.com"													,	
+	domain="https://demo021.service-now.com"	# if this returns error, try this instance: "https://demo016.service-now.com"												,	
 	user_pwd="itil:itil"												,				
 	table_name="incident"										,					
 	sysparm_query="numberSTARTSWITHINC&state=2&approval=not requested"									,	
