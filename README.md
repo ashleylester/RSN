@@ -66,6 +66,7 @@ rsn_aggr_api(
 
 # notes
 1.	in table API when setting the list of columns to return (the sysparm_fields argument), be aware that certain field names are looked up in other tables, although it might not look like the case when you browse the  table in a browser using the user interface. Therefore, for situations like this you have to specify the column you need to return from the looked-up table. For example, at the time of writing this, the demo021 instance had a table named 'incident' with a column 'assigned_to', however when you just include 'assigned_to' in sysparm_fields list, the function will return a list of assigned_to 'assigned_to.link' and 'assigned_to.value'. None of those contain the name of the 'assigned_to' person. To return the name, include assigned_to.name' in sysparm_fields because the name of the 'assigned_to' person is located in the 'sys_user' tablewhich we can tell by looking at URL api call found in the 'assigned_to.link' column value.
+2.	Thank you to [Gobii Vivagananda](https://www.linkedin.com/in/gobii/) who initially referred me to the SN REST API documentation.
 
 
 # Learn More:
