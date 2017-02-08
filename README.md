@@ -16,16 +16,18 @@ Currently there are 2 quick functions for ServiceNow Table API and Aggregate API
 # Example
 
 This example uses ServiceNow demo instance:
-https://demo021.service-now.com
+https://demo016.service-now.com
  - login: itil
  - password: itil
+
+Note: this demo instance might not be available. Last checked: 2017-02-07. Demo instances might be available demo016 through demo022.
 
 ### Table API:
 ```
 source(file=url("https://raw.githubusercontent.com/kirillsavine/RSN/master/rsn.r"))
 
 rsn_table_api(
-	domain="https://demo021.service-now.com",  
+	domain="https://demo016.service-now.com",  
 	user_pwd="itil:itil",   
 	table_name="incident",		
 	sysparm_query="numberSTARTSWITHINC&state=2&assigned_to.name=Don Goodliffe",	 
@@ -39,7 +41,7 @@ rsn_table_api(
 source(file=url("https://raw.githubusercontent.com/kirillsavine/RSN/master/rsn.r"))
 
 rsn_aggr_api(
-	domain="https://demo021.service-now.com",	
+	domain="https://demo016.service-now.com",	
 	user_pwd="itil:itil",				
 	table_name="incident",				
 	sysparm_query="numberSTARTSWITHINC&state=2&approval=not requested",	
