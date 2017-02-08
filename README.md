@@ -9,7 +9,7 @@ Currently there are 2 quick functions for ServiceNow Table API and Aggregate API
 
 
 # Requirements
- - ServiceNow access to REST API;
+ - access to a ServiceNow instance with REST API access;
  - R>=3.2.0;
  - R packages: RCurl, jsonlite, lubridate, utils, gsubfn;
 
