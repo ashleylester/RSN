@@ -59,7 +59,8 @@ rsn_table_api=function(
 	)
 				
 	
-	# sometimes a SN API instance does not return result right away. Instead it returns a web-page saying "System initializing, please try later"
+	# sometimes a SN API instance does not return result right away. 
+	# Instead it returns a web-page saying "System initializing, please try later"
 	# the script will keep trying until a valid json string is returned.
 	success=0;count=0
 	while(success==0){
