@@ -7,6 +7,10 @@ Currently there are 2 quick functions for ServiceNow Table API and Aggregate API
  - Table API - obtain raw table data from ServiceNow - rsn_table_api().
  - Aggregate API - use SN native function to aggregate data before returning it into R - rsn_aggr_api().
 
+# News
+
+### 2017-04-05:
+Apparently, the access to demoXXX instances has been discontinued by ServiceNow. But you can create your own developer instance. Here is  a video I found on how to do that: https://www.youtube.com/watch?v=VEGedFeIHnQ.
 
 # Requirements
  - access to a ServiceNow instance with REST API access;
