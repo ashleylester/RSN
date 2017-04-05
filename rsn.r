@@ -68,7 +68,11 @@ rsn_table_api=function(
 		res=tryCatch({fromJSON(xData)$result},error=function(e){"non-json"})
 		if(is.data.frame(res)){success=1}
 		count=count+1
-		if(count>9){stop("RSN ERROR: cannot extract data, check your inputs")}
+		if(count==9){
+			xml_url=paste0("https://",xml_url)			
+		}else if(count>19){
+			stop("RSN ERROR: cannot extract data, check your inputs")		
+		}
 	}
 
 	# ensure that the output data.frame's colums each represent a flat array of objects, otherwise return a warning
