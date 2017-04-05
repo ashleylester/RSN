@@ -34,8 +34,8 @@ rsn_table_api(
 	domain="https://demo016.service-now.com",  
 	user_pwd="itil:itil",   
 	table_name="incident",		
-	sysparm_query="numberSTARTSWITHINC&state=2&assigned_to.name=Don Goodliffe",	 
-	sysparm_fields=c("number","active","assigned_to.name","business_duration","state"),  
+	sysparm_query="active%3Dtrue",	 
+	sysparm_fields=c("number","opened_at","short_description"),  
 	sysparm_limit=10   
 )
 ```
