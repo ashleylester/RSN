@@ -57,7 +57,8 @@ rsn_table_api=function(
 		opt_args_url,
 		paste0("sysparm_view=")
 	)
-				
+	
+	print(xml_url);			
 	
 	# sometimes a SN API instance does not return result right away. 
 	# Instead it returns a web-page saying "System initializing, please try later"
@@ -138,6 +139,7 @@ rsn_aggr_api=function(
 		paste0("sysparm_view=")
 	)
 				
+	print(xml_url);
 	
 	# sometimes a SN API instance does not return result right away. Instead it returns a web-page saying "System initializing, please try later"
 	# the script will keep trying until a valid json string is returned.
