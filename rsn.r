@@ -27,7 +27,9 @@ rsn_table_api=function(
 	table_name="incident"										,					
 	sysparm_query="numberSTARTSWITHINC&state=2"									,	
 	sysparm_fields=c("number","active","assigned_to.name","business_duration","state")					,
-	sysparm_limit=10																															,
+	sysparm_limit=10,
+	retry=TRUE,
+	inital_check=FALSE,
 	...	
 ){
 	### ServiceNow Table API
@@ -48,6 +50,9 @@ rsn_table_api=function(
 	opt_args_url=rsn_collect_args(list(...))
 	
 
+	#	opt_args_url="sysparm_display_value='true'"
+	
+	
 	# construct a single url string to feed into the REST API
 	xml_url=paste0(
 		paste0(domain,"/api/now/table/",table_name,"?"),
@@ -58,7 +63,18 @@ rsn_table_api=function(
 		paste0("sysparm_view=")
 	)
 	
-	print(xml_url);			
+	if(inital_check){	
+		xml_url_test=paste0(
+			paste0(domain,"/api/now/table/",table_name,"?"),
+			paste0("sysparm_query=",URLencode(sysparm_query),"&"),
+			paste0("sysparm_fields=sys_id&")		,
+			paste0("sysparm_limit=1&"),
+			paste0("sysparm_view=")
+		)		
+		xData <- getURL(xml_url_test,userpwd=user_pwd, httpauth = 1L)
+		if("{\"result\":[]}"==xData){stop("RSN ERROR: inital check faild. Likely there is no data. ")}
+	}
+	
 	
 	# sometimes a SN API instance does not return result right away. 
 	# Instead it returns a web-page saying "System initializing, please try later"
@@ -68,11 +84,16 @@ rsn_table_api=function(
 		xData <- getURL(xml_url,userpwd=user_pwd, httpauth = 1L)
 		res=tryCatch({fromJSON(xData)$result},error=function(e){"non-json"})
 		if(is.data.frame(res)){success=1}
-		count=count+1
-		if(count==9){
-			xml_url=paste0("https://",xml_url)			
-		}else if(count>19){
-			stop("RSN ERROR: cannot extract data, check your inputs")		
+		
+		if(retry==TRUE){		
+			count=count+1
+			if(count==9){
+				xml_url=paste0("https://",xml_url)			
+			}else if(count>19){
+				stop("RSN ERROR: cannot extract data, check your inputs")		
+			}			
+		}else{
+			stop("RSN ERROR: cannot extract data, check your inputs")	
 		}
 	}
 
@@ -99,7 +120,8 @@ rsn_aggr_api=function(
 	table_name="incident"										,					
 	sysparm_query="numberSTARTSWITHINC&state=2&approval=not requested"									,	
     sysparm_group_by=c("assigned_to.name","state")			,
-	sysparm_aggregate_fields=list("avg"="reassignment_count","sum"="business_duration")	,																															
+	sysparm_aggregate_fields=list("avg"="reassignment_count","sum"="business_duration")	,		
+	retry=TRUE,	
 	...	
 ){
 	### ServiceNow Aggregate API
@@ -148,8 +170,12 @@ rsn_aggr_api=function(
 		xData <- getURL(xml_url,userpwd=user_pwd, httpauth = 1L)
 		res=tryCatch({fromJSON(xData)$result},error=function(e){"non-json"})
 		if(is.data.frame(res)){success=1}
-		count=count+1
-		if(count>9){stop("RSN ERROR: cannot extract data, check your inputs")}
+		if(retry==TRUE){
+			count=count+1		
+			if(count>9){stop("RSN ERROR: cannot extract data, check your inputs")}
+		}else{
+			stop("RSN ERROR: cannot extract data, check your inputs")
+		}
 	}
 	
 	# ensure category fields are separated
@@ -171,7 +197,6 @@ rsn_aggr_api=function(
 	print(paste0(nrow(res)," x ",length(names(res))," done in: ",gsubfn(".", list("S" = " sec.", "M" = " min.", "H" = " hr.", "d" = " days"), toString(round(seconds_to_period(secs),0)))," (or ",round(secs,2)," sec.)"),quote=FALSE)
 	res
 }
-
 
 
 
