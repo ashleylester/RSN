@@ -9,6 +9,13 @@ Currently there are 2 quick functions for ServiceNow Table API and Aggregate API
 
 # News
 
+### 2017-07-06:
+
+2 new arguments added:
+- `retry` (logical): in case if API returns an empty result or an error, RSN will retry multiple times before exiting (default: `TRUE`). Set it to `FALSE` to speed up certain batches, but it has its downsides.
+- `inital_check` (logical): for `rsn_table_api()` only. If set to `TRUE`, RSN will first attempt to extract 1 record based on your query (limit 1) to see if data exists based on your filtering condition. It will only proceed with full data extraction if it finds at least 1 record.
+
+
 ### 2017-04-05:
 Apparently, the access to demoXXX instances has been discontinued by ServiceNow. But you can create your own developer instance. Here is  a video I found on how to do that: https://www.youtube.com/watch?v=VEGedFeIHnQ.
 
