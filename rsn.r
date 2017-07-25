@@ -90,9 +90,11 @@ rsn_table_api=function(
 			if(count==9){
 				xml_url=paste0("https://",xml_url)			
 			}else if(count>19){
+				print(xml_url)
 				stop("RSN ERROR: cannot extract data, check your inputs")		
 			}			
 		}else{
+			print(xml_url)
 			stop("RSN ERROR: cannot extract data, check your inputs")	
 		}
 	}
