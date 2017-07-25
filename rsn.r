@@ -174,6 +174,7 @@ rsn_aggr_api=function(
 			count=count+1		
 			if(count>9){stop("RSN ERROR: cannot extract data, check your inputs")}
 		}else{
+			print(xml_url)
 			stop("RSN ERROR: cannot extract data, check your inputs")
 		}
 	}
