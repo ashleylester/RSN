@@ -57,7 +57,7 @@ rsn_table_api=function(
 	xml_url=paste0(
 		paste0(domain,"/api/now/table/",table_name,"?"),
 		paste0("sysparm_query=",URLencode(sysparm_query),"&"),
-		paste0("sysparm_fields=",paste(sysparm_fields,collapse=","),"&")		,
+		ifelse(any(is.na(sysparm_fields)),"",paste0("sysparm_fields=",paste(sysparm_fields,collapse=","),"&"))		,
 		paste0("sysparm_limit=",toString(sysparm_limit),"&"),
 		opt_args_url,
 		paste0("sysparm_view=")
