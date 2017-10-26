@@ -106,8 +106,10 @@ rsn_table_api=function(
 	if(length(check_class)>0){
 		warning(paste0("RSN WARNING: Please ensure you are requesting the right value for the following fields: ",toString(names(res)[check_class])))
 	}else{
-		if(length(names(res))!=sysparm_fields){warning("Not all fields returned")}else{
-			names(res)=sysparm_fields
+		if(!any(is.na(sysparm_fields))){
+			if(length(names(res))!=sysparm_fields){warning("Not all fields returned")}else{
+				names(res)=sysparm_fields
+			}
 		}
 	}
 
