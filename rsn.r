@@ -33,8 +33,8 @@ rsn_table_api=function(
 	...	
 ){
 	### ServiceNow Table API
-	### COPYRIGHT HOLDER: Kirill Savine 
 	### YEAR: 2016
+	### Author: Kirill Savine 	
 	### original source: https://github.com/kirillsavine/RSN
 	
 	st=Sys.time()	
