@@ -32,9 +32,9 @@ rsn_table_api=function(
 	inital_check=FALSE,
 	...	
 ){
-	### ServiceNow Table API
-	### COPYRIGHT HOLDER: Kirill Savine 
+	### ServiceNow API R interface
 	### YEAR: 2016
+	### Author: Kirill Savine 	
 	### original source: https://github.com/kirillsavine/RSN
 	
 	st=Sys.time()	
@@ -130,9 +130,10 @@ rsn_aggr_api=function(
 	retry=TRUE,	
 	...	
 ){
-	### ServiceNow Aggregate API
-	### COPYRIGHT HOLDER: Kirill Savine 
+	### ServiceNow API R interface
 	### YEAR: 2016
+	### Author: Kirill Savine 	
+	### original source: https://github.com/kirillsavine/RSN
 	
 	st=Sys.time()	
 	options(scipen = 999)	
